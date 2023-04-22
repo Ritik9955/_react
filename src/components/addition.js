@@ -3,19 +3,32 @@ import { useState } from "react";
  
 
 function Adition() {
-    const [add ,setadd]=useState();
-
-    function Addition(a, b) {
-        // let c=a+b;
-        
+    const [form ,setform]=useState({
+        name:'ritk',
+        age : '',
+        email:'',
+        password:''
+    });
+   
+    function onChangeHandler(event ) {
+        console.log(event.target.name);
+        setform({ ...form, [event.target.name]: event.target.value });
     }
-    // setadd(32);
-    Addition(23,5);
-    console.log(add);
+    function submitform(){
+        console.log('ritik onclick');
+    }
+    // ('setadd32');
+    console.log(form);
     return (
        
         <div>
-            <h1> i am add div</h1>
+            <h1> i am add div {form.name}</h1>
+            <label>Name</label>
+            <input type='text' value={form.name} name="name"  onChange={onChangeHandler}></input>
+            <input type='number' value={form.age} name="age"  onChange={onChangeHandler}></input>
+
+            {/* <input value={add} onChange={onChangeHandler} ></input> */}
+            <button onClick={submitform}>submt</button>
         </div>
     );
 }
